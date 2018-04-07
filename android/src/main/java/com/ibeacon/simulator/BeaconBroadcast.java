@@ -83,7 +83,7 @@ public class BeaconBroadcast extends ReactContextBaseJavaModule {
 	}
 
   @ReactMethod
-  public void startSharedAdvertisingBeaconWithString(String uuid, int major, int minor,String identifier) {
+  public void startSharedAdvertisingBeaconWithString(String uuid, int major, int minor, String identifier, int txPower) {
 		int manufacturer = 0x4C;
 		Beacon beacon = new Beacon.Builder()
 				.setId1(uuid)
@@ -91,7 +91,7 @@ public class BeaconBroadcast extends ReactContextBaseJavaModule {
 				.setId3(String.valueOf(minor))
 				.setManufacturer(manufacturer)
 				.setBluetoothName(identifier)
-				.setTxPower(-59)
+				.setTxPower(txPower)
 				.build();
 		BeaconParser beaconParser = new BeaconParser()
 				.setBeaconLayout("m:2-3=0215,i:4-19,i:20-21,i:22-23,p:24-24");
